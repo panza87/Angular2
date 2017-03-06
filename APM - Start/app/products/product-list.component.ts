@@ -4,8 +4,9 @@ import { IProduct } from './product';
 
 @Component({
   selector: 'pm-products',
-  templateUrl: 'app/products/product-list.component.html',
-  styleUrls: ['app/products/product-list.component.css']
+  moduleId: module.id,
+  templateUrl: 'product-list.component.html',
+  styleUrls: ['product-list.component.css']
 })
 
 export class ProductListComponent implements OnInit {
@@ -13,6 +14,7 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
+  listFilter: string = 'cart';
   products: IProduct[] = [
     {
         "productId": 1,
@@ -42,5 +44,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("In OnInit");
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 }
